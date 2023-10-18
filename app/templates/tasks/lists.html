@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <style>
+        body{
+            
+            box-sizing: border-box;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* .container{
+            border: 1px solid black;
+            width: 30%;
+            height: 50%;
+            box-shadow: 1px 1px 20px 2px;
+            background-color: rgb(173, 205, 233);
+            position: relative;
+        }
+        h1{
+            text-align: center;
+        }
+        form{
+            
+            background-color: white;
+            width: 80%;
+            height:60%;
+            margin: 20px;
+        }
+        input{
+            display: inline;
+            
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo App</h1>
+
+    <form method="post" action="/">
+        {% csrf_token %}
+        <div class="title">
+            {{forms.title}}
+        </div>
+        
+        <input type ="submit" name = "createform">
+    </form>
+
+
+
+    {% for task in tasks %}
+        <div>
+            
+            {% if task.complete == True %}
+            <p style="text-decoration: line-through;">{{task}}</p>
+            {% else %}
+            <span>{{task}}</span>
+            {%endif%}
+            <a href="{% url 'update_tasks' task.id %}">update</a>
+            <a href="{% url 'delete_tasks' task.id %}">Delete</a>
+
+        </div>
+    {% endfor%}
+    </div>
+    
+</body>
+</html>

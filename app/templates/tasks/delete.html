@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <style>
+        body{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            border: 1px solid black;
+            width: 500px;
+            height: 180px;
+            margin-left: 500px;
+            margin-top: 25px;
+            box-shadow: 1px 1px 20px 2px;
+            text-align: center;
+            background-color: rgb(173, 205, 233);
+        }
+        p{
+            font-size: larger;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+        p span{
+            color: rgb(0, 21, 252);
+            font-size: x-large;
+        }
+        a{
+            text-decoration: none;
+            font-size: large;
+            display: block;
+            margin-top: 20px;
+        }
+        a:hover{
+            color: red;
+            font-size: large;
+        }
+        input{
+            margin-top: 30px;
+            color: rgb(206, 4, 4);
+            font-size: large;
+            border-radius: 4px;
+            width: 220px;
+            height: 30px;
+            background-color: rgb(45, 243, 6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Are you sure waant to delete <span>{{item}}</span></p>
+        <a href="{% url 'list' %}">cancel</a>
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="submit" name="delete_task">
+        </form>
+    </div>
+    
+</body>
+</html>
